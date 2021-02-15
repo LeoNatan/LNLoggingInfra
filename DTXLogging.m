@@ -1,22 +1,22 @@
 //
-//  DTLogging.m
-//  DTXLoggingInfra
+//  LNLogging.m
+//  LNLoggingInfra
 //
-//  Created by Leo Natan (Wix) on 19/07/2017.
-//  Copyright © 2017 Wix. All rights reserved.
+//  Created by Leo Natan on 19/07/2017.
+//  Copyright © 2017-2021 Leo Natan. All rights reserved.
 //
 
 @import Foundation;
-#import "DTXLogging.h"
+#import "LNLogging.h"
 
-#ifdef DTX_LOG_SUBSYSTEM
-NSString* __dtx_log_get_subsystem(void)
+#ifdef LN_LOG_SUBSYSTEM
+NSString* __ln_log_get_subsystem(void)
 {
-	return @DTX_LOG_SUBSYSTEM;
+	return @LN_LOG_SUBSYSTEM;
 }
 #endif
 
-void __dtx_log(os_log_t log, os_log_type_t logType, NSString* prefix, NSString* format, ...)
+void __ln_log(os_log_t log, os_log_type_t logType, NSString* prefix, NSString* format, ...)
 {
 	if(os_log_type_enabled(log, logType) == false)
 	{
@@ -25,11 +25,11 @@ void __dtx_log(os_log_t log, os_log_type_t logType, NSString* prefix, NSString* 
 	
 	va_list argumentList;
 	va_start(argumentList, format);
-	__dtx_logv(log, logType, prefix, format, argumentList);
+	__ln_logv(log, logType, prefix, format, argumentList);
 	va_end(argumentList);
 }
 
-void __dtx_logv(os_log_t log, os_log_type_t logType, NSString* prefix, NSString* format, va_list args)
+void __ln_logv(os_log_t log, os_log_type_t logType, NSString* prefix, NSString* format, va_list args)
 {
 	if(os_log_type_enabled(log, logType) == false)
 	{

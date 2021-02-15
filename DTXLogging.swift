@@ -1,9 +1,9 @@
 //
-//  DTXLogging.swift
-//  DTXLoggingInfra
+//  LNLogging.swift
+//  LNLoggingInfra
 //
-//  Created by Leo Natan (Wix) on 5/3/20.
-//  Copyright © 2020 Leo Natan. All rights reserved.
+//  Created by Leo Natan on 5/3/20.
+//  Copyright © 2017-2021 Leo Natan. All rights reserved.
 //
 
 import os.log
@@ -26,7 +26,7 @@ public class DetoxLog {
 		if _subsystem == nil {
 			//Try to read the subsystem from ObjC
 			let RTLD_DEFAULT = UnsafeMutableRawPointer(bitPattern: -2)
-			guard let sym = dlsym(RTLD_DEFAULT, "__dtx_log_get_subsystem") else {
+			guard let sym = dlsym(RTLD_DEFAULT, "__ln_log_get_subsystem") else {
 				fatalError("No subsystem provided and no Objective C subsystem exists")
 			}
 			typealias ff = @convention(c) () -> String
