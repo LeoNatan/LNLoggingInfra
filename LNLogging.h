@@ -32,6 +32,7 @@ __unused static os_log_t __prepare_and_return_file_log(void) { \
 #define LN_CREATE_LOG(name)
 #define LN_CREATE_LOG_PREFIX(name, prefix)
 #define __prepare_and_return_file_log() OS_LOG_DEFAULT
+#define __current_log_prefix @""
 #endif
 
 #define ln_log_debug(format, ...) __ln_log(__prepare_and_return_file_log(), OS_LOG_TYPE_DEBUG, __current_log_prefix, format, ##__VA_ARGS__)
